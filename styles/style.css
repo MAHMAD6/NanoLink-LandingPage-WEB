@@ -1,1 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #101010;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  
+}
+
+
+.navbar {
+  position: fixed;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.logo {
+  height: 30px;
+}
+
+.logo-name {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.highlighted {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: #fed50d;
+  color: #101010;
+  font-weight: 500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  font-size: 3rem;
+}
+
+.login-container {
+  display: flex;
+  gap: 15px;
+}
+
+/* 768 */
+@media (max-width: 920px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+  .navbar-active {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nav-menu-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-container {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Only apply blur-on-hover on large screens */
+@media (min-width: 921px) {
+  /* Smooth transitions */
+  .navbar a {
+    transition: filter 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* Blur all non-hovered links when hovering nav or login */
+  .nav-menu:hover a:not(:hover),
+  .login-container:hover a:not(:hover),
+  .navbar:hover .nav-menu a:not(:hover),
+  .navbar:hover .login-container a:not(:hover) {
+    filter: blur(1.5px);
+  }
+
+  /* Highlight hovered item */
+  .navbar a:hover {
+    filter: blur(0);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  }
+}
