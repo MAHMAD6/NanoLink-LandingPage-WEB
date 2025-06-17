@@ -89,3 +89,11 @@ function cycleImages() {
 setTimeout(() => {
   setInterval(cycleImages, 2000);
 }, 2000);
+
+
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', () => {
+    const parent = question.parentElement;
+    parent.classList.toggle('open');
+  });
+});
