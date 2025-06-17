@@ -8,22 +8,41 @@ let count = 0;
 
 
 hamburger.addEventListener('click', () => {
+  showMenu();
+});
+
+function showMenu() {
   heading.classList.add('hidden');
-  hamburger.classList.add('hidden');
   closeBtn.classList.remove('hidden');
+  hamburger.classList.add('hidden');
 
   navBar.classList.add('navbar-active');
   navItemsOptions.classList.add('nav-menu-active');
   if (count == 0) {
-
     [...navItemsLoginOptions.children].forEach(child => {
-      navItemsOptions.appendChild(child.cloneNode(true));
+      const clone = child.cloneNode(true);
+      clone.classList.add('cloned-login');
+      navItemsOptions.appendChild(clone);
     });
     count++;
   }
+}
 
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 920) {
+    const clonedLoginItems = navItemsOptions.querySelectorAll('.cloned-login');
+    clonedLoginItems.forEach(el => el.remove());
+    heading.classList.remove("hidden");
+    count = 0;
+  }
 });
 
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 920) {
+    heading.classList.add("hidden");
+    showMenu();
+  }
+});
 
 closeBtn.addEventListener('click', () => {
   closeBtn.classList.add('hidden');
@@ -56,7 +75,7 @@ const imageData = [
   { default: "assets/images/earn.png", active: "assets/images/earn-yellow.png", label: "Earn for Every Click" }
 ];
 
-let activeIndex = 1; 
+let activeIndex = 1;
 
 
 imageElements[0].classList.add("active");
